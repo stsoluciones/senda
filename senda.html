@@ -1,0 +1,2601 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="SENDA Living Care — Gestión integral premium para residencias en barrios cerrados del AMBA. Su hogar, en manos de expertos." />
+<meta name="theme-color" content="#1C1815" />
+<meta property="og:title" content="SENDA Living Care — Gestión Integral Premium" />
+<meta property="og:description" content="Su hogar, en manos de expertos. Gestión integral premium para residencias en barrios cerrados." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="senda-logo.png" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 12 L20 38 L20 78 L80 78 L80 38 Z' stroke='%23D4A574' stroke-width='3' fill='none'/%3E%3C/svg%3E" />
+<title>SENDA Living Care · Gestión Integral Premium</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:           #14110E;   /* charcoal warm deep */
+  --bg-2:         #1C1815;   /* charcoal warm */
+  --bg-3:         #25201B;   /* warm panel */
+  --line:         rgba(212, 165, 116, 0.18);
+  --line-strong:  rgba(212, 165, 116, 0.45);
+  --copper:       #B8865A;
+  --copper-l:     #D4A574;
+  --champagne:    #D4B575;
+  --champagne-l:  #E8C97A;
+  --text:         #F5F0E8;
+  --text-mute:    #A89C8B;
+  --text-soft:    #786C5C;
+  --grad-copper:  linear-gradient(135deg, #B8865A 0%, #D4A574 40%, #E8C97A 100%);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+}
+
+/* Atmospheric noise/grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    repeating-linear-gradient(0deg,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px, transparent 3px);
+  mix-blend-mode: overlay;
+}
+
+/* Soft copper glow ambience */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(184,134,90,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 90% 100%, rgba(212,165,116,0.06) 0%, transparent 60%);
+}
+
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration: none; }
+
+/* ─────────────────────────────────────
+   TYPOGRAPHY
+───────────────────────────────────── */
+.display {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+.display em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--champagne-l);
+}
+.eyebrow {
+  font-family: 'Jost', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--copper-l);
+}
+.section-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--copper);
+  letter-spacing: 0.1em;
+}
+.body-text {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  color: var(--text-mute);
+  line-height: 1.75;
+  font-size: 17px;
+  letter-spacing: 0.005em;
+}
+
+/* ─────────────────────────────────────
+   LAYOUT UTILITIES
+───────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+section { position: relative; z-index: 2; }
+
+.divider-rule {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  margin: 0 auto;
+}
+.divider-rule-tight {
+  width: 100px;
+  height: 1px;
+  background: var(--copper);
+  opacity: 0.6;
+}
+
+/* ─────────────────────────────────────
+   NAVBAR
+───────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 22px 0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(20, 17, 14, 0);
+}
+.nav.scrolled {
+  background: rgba(20, 17, 14, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.nav-logo {
+  width: 30px;
+  height: 32px;
+}
+.nav-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+.nav-wordmark .word {
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  letter-spacing: 0.18em;
+  color: var(--champagne);
+}
+.nav-wordmark .sub {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: var(--copper);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+.nav-links {
+  display: flex;
+  gap: 38px;
+  align-items: center;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  transition: color 0.3s;
+  position: relative;
+  padding: 4px 0;
+}
+.nav-links a:hover { color: var(--champagne-l); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--copper-l);
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--bg);
+  background: var(--grad-copper);
+  border-radius: 0;
+  transition: all 0.4s;
+  font-weight: 500;
+}
+.nav-cta:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(212, 165, 116, 0.25);
+}
+
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--champagne);
+  padding: 10px 14px;
+  cursor: pointer;
+  letter-spacing: 0.2em;
+  font-family: inherit;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────
+   HERO
+───────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 160px 0 120px;
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.hero-left { position: relative; }
+.hero-eyebrow {
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--copper);
+}
+.hero h1 {
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 300;
+  margin-bottom: 36px;
+  letter-spacing: -0.015em;
+}
+.hero h1 .accent {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--champagne-l);
+  display: inline-block;
+}
+.hero-lead {
+  font-size: 19px;
+  line-height: 1.7;
+  color: var(--text-mute);
+  max-width: 520px;
+  margin-bottom: 52px;
+  font-weight: 300;
+}
+.hero-cta-group {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 36px;
+  background: var(--grad-copper);
+  color: #1C1815;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #E8C97A 0%, #D4A574 50%, #B8865A 100%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+.btn-primary > * { position: relative; z-index: 1; }
+.btn-primary:hover::before { opacity: 1; }
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 40px rgba(212, 165, 116, 0.3);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 0;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  border-bottom: 1px solid var(--line-strong);
+  transition: all 0.3s;
+}
+.btn-secondary:hover {
+  color: var(--champagne-l);
+  border-bottom-color: var(--champagne-l);
+  letter-spacing: 0.32em;
+}
+
+.hero-right {
+  position: relative;
+}
+/* ─────────────────────────────────────
+   HERO SLIDER — Editorial composition
+───────────────────────────────────── */
+.hero-slider {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  overflow: hidden;
+}
+.slide.active {
+  opacity: 1;
+  pointer-events: all;
+  z-index: 2;
+}
+
+/* OPTIONAL real photo background — if user adds a slide-photo URL, it shows on top
+   To use: set background-image on .slide-photo */
+.slide-photo {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.06);
+  transition: transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+.slide.active .slide-photo {
+  transform: scale(1.12);
+}
+/* When photo loads, dim the background pattern */
+.slide-photo:not(:empty) ~ .slide-pattern { opacity: 0.3; }
+
+/* IMG-based slide photo with automatic fallback */
+.slide-photo-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0;
+  transform: scale(1.06);
+  transition: opacity 1.4s ease,
+              transform 8s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+.slide-photo-img.loaded {
+  opacity: 1;
+}
+.slide.active .slide-photo-img.loaded {
+  transform: scale(1.12);
+}
+/* When real photo loaded, dim the decorative editorial layers */
+.slide-photo-img.loaded ~ .slide-pattern { opacity: 0.12; }
+.slide-photo-img.loaded ~ .slide-number  { opacity: 0; transition: opacity 1s; }
+.slide-photo-img.loaded ~ .slide-icon    { opacity: 0; transition: opacity 1s; }
+
+/* ─── Per-slide editorial backgrounds ─── */
+.slide-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.slide[data-theme="home"]      .slide-bg {
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(212,165,116,0.10) 0%, transparent 55%),
+    linear-gradient(160deg, #1F1812 0%, #14110E 60%, #0F0D0B 100%);
+}
+.slide[data-theme="technical"] .slide-bg {
+  background:
+    radial-gradient(ellipse at 50% 25%, rgba(255,180,90,0.13) 0%, transparent 55%),
+    linear-gradient(170deg, #2A1C12 0%, #1A1410 55%, #0D0B09 100%);
+}
+.slide[data-theme="green"]     .slide-bg {
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(180,160,90,0.12) 0%, transparent 55%),
+    linear-gradient(165deg, #1A2118 0%, #131A12 55%, #0C100A 100%);
+}
+.slide[data-theme="smart"]     .slide-bg {
+  background:
+    radial-gradient(ellipse at 30% 30%, rgba(140,160,200,0.10) 0%, transparent 55%),
+    linear-gradient(155deg, #161E2A 0%, #111620 55%, #0A0D14 100%);
+}
+.slide[data-theme="pool"]      .slide-bg {
+  background:
+    radial-gradient(ellipse at 60% 25%, rgba(150,200,220,0.12) 0%, transparent 55%),
+    linear-gradient(180deg, #112229 0%, #0E1A20 55%, #080F13 100%);
+}
+
+/* ─── Decorative SVG pattern layer (per slide) ─── */
+.slide-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.9;
+  transition: opacity 0.6s;
+}
+.slide-pattern svg { width: 100%; height: 100%; display: block; }
+
+/* ─── Big editorial number background (decorative) ─── */
+.slide-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(280px, 36vw, 460px);
+  color: rgba(212, 165, 116, 0.05);
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Featured icon (centerpiece) ─── */
+.slide-icon {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36%;
+  max-width: 220px;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity 1.2s 0.4s, transform 1.2s 0.4s;
+}
+.slide.active .slide-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+.slide:not(.active) .slide-icon {
+  transform: translate(-50%, -50%) scale(0.94);
+}
+.slide-icon svg { width: 100%; height: 100%; }
+
+/* ─── Slide service tag (top-left editorial label) ─── */
+.slide-tag {
+  position: absolute;
+  top: 60px;
+  left: 38px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 1s 0.4s, transform 1s 0.4s;
+}
+.slide.active .slide-tag { opacity: 1; transform: translateY(0); }
+.slide-tag::before {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--copper-l);
+}
+.slide-tag span {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--copper-l);
+}
+
+/* ─── Slide caption (bottom) ─── */
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(20,17,14,0.0) 0%,
+    rgba(20,17,14,0.0) 55%,
+    rgba(20,17,14,0.75) 85%,
+    rgba(20,17,14,0.96) 100%);
+  z-index: 4;
+  pointer-events: none;
+}
+.slide-caption {
+  position: absolute;
+  bottom: 90px;       /* leave room for controls below */
+  left: 38px;
+  right: 38px;
+  z-index: 5;
+  color: var(--text);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: opacity 1s 0.5s, transform 1s 0.5s;
+}
+.slide.active .slide-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+.slide-eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--copper-l);
+  margin-bottom: 12px;
+}
+.slide-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: clamp(22px, 2.6vw, 32px);
+  line-height: 1.2;
+  color: var(--text);
+  letter-spacing: -0.005em;
+}
+.slide-title em {
+  font-style: italic;
+  color: var(--champagne-l);
+  font-weight: 400;
+}
+
+/* ─── Decorative corner brackets ─── */
+.hero-corner {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--copper);
+  opacity: 0.55;
+  z-index: 4;
+  pointer-events: none;
+}
+.hero-corner.tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.hero-corner.tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.hero-corner.bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.hero-corner.br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+/* ─── Slider controls (bottom, full width) ─── */
+.slider-controls {
+  position: absolute;
+  bottom: 24px;
+  left: 38px;
+  right: 38px;
+  z-index: 6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.slider-counter {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--text);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.slider-counter .current { color: var(--champagne-l); font-weight: 500; }
+.slider-counter .sep     { color: var(--copper); margin: 0 6px; opacity: 0.6; }
+.slider-counter .total   { color: var(--text-soft); }
+
+.slider-nav {
+  display: flex;
+  gap: 6px;
+}
+.slider-btn {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--copper-l);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+.slider-btn:hover {
+  background: var(--copper);
+  color: var(--bg);
+  border-color: var(--copper);
+}
+.slider-btn svg { width: 11px; height: 11px; }
+
+/* ─── Progress dots row (top) ─── */
+.slider-dots {
+  position: absolute;
+  top: 24px;
+  right: 38px;
+  z-index: 5;
+  display: flex;
+  gap: 6px;
+  width: 200px;
+}
+.slider-dot {
+  flex: 1;
+  height: 2px;
+  background: rgba(212, 165, 116, 0.18);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+.slider-dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--copper-l);
+  transform: translateX(-100%);
+  transition: transform 0.4s linear;
+}
+.slider-dot.active::after {
+  animation: dotFill 6s linear forwards;
+}
+.slider-dot.done::after { transform: translateX(0); }
+@keyframes dotFill {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+.hero-slider.paused .slider-dot.active::after { animation-play-state: paused; }
+
+.hero-meta {
+  margin-top: 28px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+.hero-meta strong { color: var(--copper); font-weight: 400; }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.scroll-hint::after {
+  content: '';
+  width: 1px; height: 50px;
+  background: linear-gradient(180deg, var(--copper), transparent);
+  animation: scrollPulse 2.4s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ─────────────────────────────────────
+   SECTION HEADERS
+───────────────────────────────────── */
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  padding-bottom: 50px;
+  margin-bottom: 80px;
+  border-bottom: 1px solid var(--line);
+  gap: 40px;
+}
+.section-head-left { max-width: 720px; }
+.section-head .section-num {
+  display: block;
+  margin-bottom: 24px;
+}
+.section-head h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  margin-bottom: 22px;
+}
+.section-head .body-text { max-width: 580px; }
+
+/* ─────────────────────────────────────
+   MANIFESTO SECTION
+───────────────────────────────────── */
+.manifesto {
+  padding: 140px 0 120px;
+  position: relative;
+}
+.manifesto-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 52px);
+  line-height: 1.3;
+  color: var(--text);
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  letter-spacing: -0.005em;
+  position: relative;
+}
+.manifesto-quote::before, .manifesto-quote::after {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--copper);
+  font-size: 1.4em;
+  line-height: 0;
+  position: relative;
+}
+.manifesto-quote::before { content: '"'; margin-right: 4px; }
+.manifesto-quote::after  { content: '"'; margin-left: 4px; }
+.manifesto-quote .key { color: var(--champagne-l); }
+
+.manifesto-attribution {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.manifesto-attribution::before,
+.manifesto-attribution::after {
+  content: '';
+  width: 50px;
+  height: 1px;
+  background: var(--copper);
+  opacity: 0.5;
+}
+
+.pillars {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  padding-top: 60px;
+  border-top: 1px solid var(--line);
+}
+.pillar {
+  text-align: left;
+  position: relative;
+  padding-left: 24px;
+}
+.pillar::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 6px;
+  width: 1px;
+  height: 30px;
+  background: var(--copper);
+}
+.pillar-name {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  margin-bottom: 14px;
+}
+.pillar-desc {
+  font-size: 14px;
+  color: var(--text-mute);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ─────────────────────────────────────
+   SERVICES SECTION
+───────────────────────────────────── */
+.services {
+  padding: 140px 0;
+  background: var(--bg-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+}
+.services::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(184,134,90,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+}
+.service-card {
+  padding: 50px 40px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  transition: background 0.5s;
+  cursor: default;
+}
+.service-card:hover {
+  background: linear-gradient(135deg, rgba(184,134,90,0.05), transparent);
+}
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 1px;
+  background: var(--copper-l);
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.service-card:hover::after { width: 100%; }
+.service-icon {
+  width: 44px; height: 44px;
+  margin-bottom: 28px;
+  color: var(--copper-l);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.service-card:hover .service-icon {
+  transform: rotate(-4deg) scale(1.05);
+}
+.service-num {
+  position: absolute;
+  top: 30px; right: 30px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+.service-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 12px;
+  letter-spacing: -0.005em;
+}
+.service-name em {
+  font-style: italic;
+  color: var(--champagne-l);
+  font-weight: 300;
+}
+.service-tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 18px;
+}
+.service-desc {
+  font-size: 14px;
+  color: var(--text-mute);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+/* ─────────────────────────────────────
+   DIFFERENTIATORS
+───────────────────────────────────── */
+.differentiators {
+  padding: 140px 0;
+  position: relative;
+}
+.diff-list {
+  display: flex;
+  flex-direction: column;
+}
+.diff-item {
+  display: grid;
+  grid-template-columns: 130px 1fr 1.4fr;
+  gap: 50px;
+  padding: 50px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: start;
+  transition: background 0.4s;
+}
+.diff-item:first-child { border-top: 1px solid var(--line); }
+.diff-item:hover { background: rgba(184,134,90,0.02); }
+
+.diff-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 48px;
+  color: var(--copper);
+  line-height: 1;
+}
+.diff-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+}
+.diff-headline em {
+  font-style: italic;
+  color: var(--champagne-l);
+  font-weight: 400;
+}
+.diff-headline .tag {
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  color: var(--copper);
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.diff-detail {
+  font-size: 15px;
+  color: var(--text-mute);
+  line-height: 1.85;
+  font-weight: 300;
+}
+.diff-detail strong {
+  color: var(--champagne);
+  font-weight: 400;
+}
+
+/* ─────────────────────────────────────
+   BARRIOS CERRADOS
+───────────────────────────────────── */
+.barrios {
+  padding: 140px 0;
+  background:
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.barrios::before {
+  content: '';
+  position: absolute;
+  top: -150px; right: -150px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(184,134,90,0.08) 0%, transparent 70%);
+}
+.barrios-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 100px;
+  align-items: start;
+}
+.barrios-left h2 {
+  font-size: clamp(40px, 5.5vw, 72px);
+  margin-bottom: 36px;
+  letter-spacing: -0.015em;
+}
+.barrios-left .body-text {
+  margin-bottom: 36px;
+}
+.barrios-list {
+  list-style: none;
+  margin-top: 40px;
+}
+.barrios-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--text-mute);
+}
+.barrios-list li::before {
+  content: '';
+  width: 6px; height: 6px;
+  background: var(--copper);
+  flex-shrink: 0;
+  transform: rotate(45deg);
+}
+
+.protocol-card {
+  background:
+    linear-gradient(135deg, rgba(184,134,90,0.06), rgba(184,134,90,0.02)),
+    var(--bg-3);
+  border: 1px solid var(--line-strong);
+  padding: 60px 50px;
+  position: relative;
+}
+.protocol-label {
+  position: absolute;
+  top: -1px; left: 30px;
+  transform: translateY(-50%);
+  background: var(--bg);
+  padding: 8px 22px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--copper);
+  border: 1px solid var(--line-strong);
+}
+.protocol-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 36px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 28px;
+  margin-top: 12px;
+}
+.protocol-title em {
+  font-style: italic;
+  color: var(--champagne-l);
+}
+.protocol-body {
+  font-size: 15px;
+  color: var(--text-mute);
+  line-height: 1.85;
+  margin-bottom: 26px;
+}
+.protocol-body strong {
+  color: var(--text);
+  font-weight: 500;
+}
+.protocol-items {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid var(--line);
+}
+.protocol-items li {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+}
+.protocol-items li::before {
+  content: '✓';
+  color: var(--copper-l);
+  font-size: 14px;
+}
+
+/* ─────────────────────────────────────
+   PROCESS
+───────────────────────────────────── */
+.process {
+  padding: 140px 0;
+}
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  position: relative;
+}
+.process-steps::before {
+  content: '';
+  position: absolute;
+  top: 25px; left: 5%; right: 5%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--copper), transparent);
+  opacity: 0.3;
+}
+.process-step {
+  position: relative;
+  z-index: 2;
+}
+.process-num {
+  width: 50px; height: 50px;
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: var(--copper-l);
+  margin-bottom: 30px;
+  position: relative;
+}
+.process-step:hover .process-num {
+  background: var(--bg-3);
+  color: var(--champagne-l);
+  border-color: var(--copper);
+}
+.process-step-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.process-step-desc {
+  font-size: 14px;
+  color: var(--text-mute);
+  line-height: 1.7;
+}
+
+/* ─────────────────────────────────────
+   CONTACT
+───────────────────────────────────── */
+.contact {
+  padding: 160px 0;
+  position: relative;
+  background:
+    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+  border-top: 1px solid var(--line);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+.contact-left h2 {
+  font-size: clamp(40px, 5vw, 64px);
+  margin-bottom: 30px;
+}
+.contact-left .body-text {
+  margin-bottom: 50px;
+  max-width: 480px;
+}
+.contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.contact-channel {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+  transition: all 0.3s;
+}
+.contact-channel:hover { border-bottom-color: var(--copper-l); }
+.contact-channel-icon {
+  width: 42px; height: 42px;
+  border: 1px solid var(--line-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--copper-l);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+.contact-channel:hover .contact-channel-icon {
+  background: var(--bg-3);
+  border-color: var(--copper);
+}
+.contact-channel-info { flex: 1; }
+.contact-channel-label {
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+.contact-channel-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  color: var(--text);
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+
+.contact-form {
+  background: var(--bg-3);
+  border: 1px solid var(--line);
+  padding: 50px 44px;
+  position: relative;
+}
+.contact-form::before {
+  content: 'F O R M U L A R I O';
+  position: absolute;
+  top: -1px; right: 28px;
+  transform: translateY(-50%);
+  background: var(--bg);
+  padding: 6px 18px;
+  font-size: 9px;
+  letter-spacing: 0.38em;
+  color: var(--copper);
+  border: 1px solid var(--line);
+}
+.form-group {
+  margin-bottom: 28px;
+}
+.form-group label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--text);
+  padding: 12px 0;
+  font-family: 'Jost', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  transition: border-color 0.3s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-bottom-color: var(--champagne-l);
+}
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23D4A574' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 4px center;
+}
+.form-group select option {
+  background: var(--bg-2);
+  color: var(--text);
+}
+.form-group textarea {
+  resize: vertical;
+  min-height: 96px;
+  font-family: inherit;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+.form-submit {
+  width: 100%;
+  margin-top: 14px;
+  background: var(--grad-copper);
+  color: var(--bg);
+  border: none;
+  padding: 20px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.form-submit:hover {
+  filter: brightness(1.1);
+  letter-spacing: 0.38em;
+}
+
+/* ─────────────────────────────────────
+   FOOTER
+───────────────────────────────────── */
+.footer {
+  padding: 80px 0 50px;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  position: relative;
+  z-index: 2;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+.footer-brand-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.footer-brand-block .nav-logo { width: 38px; height: 40px; }
+.footer-brand-block .nav-wordmark .word { font-size: 22px; }
+.footer-brand-block .nav-wordmark .sub  { font-size: 10px; }
+.footer-brand-mission {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--text-mute);
+  line-height: 1.5;
+  margin-top: 24px;
+  max-width: 280px;
+}
+.footer-col-title {
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 22px;
+  font-weight: 500;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.footer-col ul a {
+  font-size: 14px;
+  color: var(--text-mute);
+  font-weight: 300;
+  transition: color 0.3s;
+}
+.footer-col ul a:hover { color: var(--champagne-l); }
+.footer-bar {
+  border-top: 1px solid var(--line);
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+}
+.footer-bar .legal { display: flex; gap: 30px; }
+.footer-bar .legal a:hover { color: var(--champagne); }
+
+/* WhatsApp floating button */
+.wa-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4),
+              0 0 0 0 rgba(37, 211, 102, 0.6);
+  animation: waPulse 2.4s infinite;
+  transition: transform 0.3s;
+}
+.wa-float:hover { transform: scale(1.1); }
+.wa-float svg { width: 30px; height: 30px; color: white; }
+@keyframes waPulse {
+  0%   { box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 0 rgba(37,211,102,0.5); }
+  70%  { box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 18px rgba(37,211,102,0); }
+  100% { box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* ─────────────────────────────────────
+   SCROLL REVEAL
+───────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal.delay-1 { transition-delay: 0.10s; }
+.reveal.delay-2 { transition-delay: 0.20s; }
+.reveal.delay-3 { transition-delay: 0.30s; }
+.reveal.delay-4 { transition-delay: 0.40s; }
+.reveal.delay-5 { transition-delay: 0.50s; }
+.reveal.delay-6 { transition-delay: 0.60s; }
+
+/* ─────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────── */
+@media (max-width: 1024px) {
+  .container { padding: 0 24px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 60px; }
+  .hero-right { order: -1; max-width: 600px; margin: 0 auto; width: 100%; }
+  .pillars { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .barrios-grid { grid-template-columns: 1fr; gap: 60px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+  .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .process-steps::before { display: none; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .section-head { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--bg-2);
+    flex-direction: column;
+    gap: 0;
+    padding: 20px 0;
+    border-top: 1px solid var(--line);
+  }
+  .nav-links.open a {
+    padding: 16px 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero { padding: 130px 0 100px; }
+  .hero h1 { font-size: 44px; }
+
+  /* Slider mobile adjustments */
+  .hero-slider { aspect-ratio: 3 / 4; }
+  .slide-tag      { top: 36px; left: 24px; }
+  .slide-tag span { font-size: 9px; letter-spacing: 0.32em; }
+  .slide-dots     { top: 36px !important; right: 24px !important; width: 130px !important; }
+  .slider-dots    { top: 36px; right: 24px; width: 130px; }
+  .slide-caption  { left: 24px; right: 24px; bottom: 78px; }
+  .slide-title    { font-size: 20px; }
+  .slider-controls{ left: 24px; right: 24px; bottom: 20px; }
+  .slide-icon     { width: 42%; max-width: 160px; top: 42%; }
+  .slide-number   { font-size: clamp(200px, 50vw, 320px); }
+
+  .pillars { grid-template-columns: 1fr; gap: 30px; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-card { padding: 40px 28px; }
+  .diff-item {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .diff-num { font-size: 36px; }
+  .protocol-card { padding: 40px 28px; }
+  .protocol-items { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-form { padding: 36px 26px; }
+  .process-steps { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bar { flex-direction: column; align-items: flex-start; }
+  .manifesto-quote { font-size: 26px; }
+  .hero-meta { flex-direction: column; gap: 12px; }
+}
+
+/* Selection */
+::selection {
+  background: var(--copper);
+  color: var(--bg);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bg-3); border-radius: 0; }
+::-webkit-scrollbar-thumb:hover { background: var(--copper); }
+</style>
+</head>
+<body>
+
+<!-- ═══════ NAVBAR ═══════ -->
+<nav class="nav" id="navbar">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-brand">
+      <svg class="nav-logo" viewBox="0 0 60 64" fill="none">
+        <defs>
+          <linearGradient id="navCopper" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#B8865A"/>
+            <stop offset="100%" stop-color="#D4A574"/>
+          </linearGradient>
+        </defs>
+        <path d="M30 6 L9 22 L9 47 L51 47 L51 22 Z" stroke="url(#navCopper)" stroke-width="2.2" stroke-linejoin="round" fill="none"/>
+        <circle cx="30" cy="17" r="3.2" stroke="url(#navCopper)" stroke-width="1.6" fill="none"/>
+        <line x1="30" y1="13.5" x2="30" y2="16.2" stroke="url(#navCopper)" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M25 27 Q24 30 26 32 Q28 30 27 27 Z M30 25 Q28 28 30 30 Q32 28 30 25 Z M33 28 Q31 31 33 33 Q35 31 33 28 Z" stroke="url(#navCopper)" stroke-width="1.1" fill="none"/>
+        <path d="M22 47 Q22 53 28 60 M30 47 Q30 53 32 60 M38 47 Q38 53 36 60" stroke="url(#navCopper)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="nav-wordmark">
+        <span class="word">SENDA</span>
+        <span class="sub">Living Care</span>
+      </div>
+    </a>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#manifesto">Filosofía</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#diferenciales">Diferenciales</a>
+      <a href="#barrios">Barrios</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+
+    <a href="https://wa.me/5491151012478" class="nav-cta" target="_blank" rel="noopener">
+      <span>Hablemos</span>
+      <span>→</span>
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">Menú</button>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="top">
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow reveal">
+        <span class="eyebrow">Living Care · est. AMBA</span>
+      </div>
+      <h1 class="display reveal delay-1">
+        Su hogar,<br>
+        en manos<br>
+        <span class="accent">de expertos.</span>
+      </h1>
+      <p class="hero-lead reveal delay-2">
+        Gestión integral premium para residencias en barrios cerrados.
+        Un único proveedor que coordina cada detalle con discreción,
+        excelencia técnica y presencia constante.
+      </p>
+      <div class="hero-cta-group reveal delay-3">
+        <a href="https://wa.me/5491151012478?text=Hola%20SENDA%2C%20quisiera%20saber%20m%C3%A1s%20sobre%20sus%20servicios." class="btn-primary" target="_blank" rel="noopener">
+          <span>Solicitar diagnóstico</span>
+          <span>→</span>
+        </a>
+        <a href="#servicios" class="btn-secondary">
+          <span>Ver servicios</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-right reveal delay-2">
+      <div class="hero-slider" id="heroSlider">
+
+        <!-- ─── SLIDE 01: Residencia Premium ─── -->
+        <article class="slide active" data-theme="home">
+          <div class="slide-bg"></div>
+          <div class="slide-pattern">
+            <svg viewBox="0 0 100 125" preserveAspectRatio="xMidYMid slice" fill="none" stroke="rgba(212,165,116,0.10)" stroke-width="0.15">
+              <!-- Blueprint grid -->
+              <g>
+                <line x1="0" y1="20" x2="100" y2="20"/>
+                <line x1="0" y1="40" x2="100" y2="40"/>
+                <line x1="0" y1="60" x2="100" y2="60"/>
+                <line x1="0" y1="80" x2="100" y2="80"/>
+                <line x1="0" y1="100" x2="100" y2="100"/>
+                <line x1="20" y1="0" x2="20" y2="125"/>
+                <line x1="40" y1="0" x2="40" y2="125"/>
+                <line x1="60" y1="0" x2="60" y2="125"/>
+                <line x1="80" y1="0" x2="80" y2="125"/>
+              </g>
+              <!-- House blueprint outline -->
+              <g stroke="rgba(212,165,116,0.18)" stroke-width="0.25">
+                <path d="M30 90 L30 55 L50 38 L70 55 L70 90 Z"/>
+                <rect x="42" y="68" width="16" height="22"/>
+                <rect x="33" y="62" width="8" height="8"/>
+                <rect x="59" y="62" width="8" height="8"/>
+                <line x1="30" y1="55" x2="70" y2="55"/>
+                <line x1="50" y1="38" x2="50" y2="55"/>
+              </g>
+            </svg>
+          </div>
+          <div class="slide-number">01</div>
+          <div class="slide-icon">
+            <svg viewBox="0 0 200 200" fill="none" stroke="url(#grad-copper-1)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <defs>
+                <linearGradient id="grad-copper-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#B8865A"/>
+                  <stop offset="100%" stop-color="#E8C97A"/>
+                </linearGradient>
+              </defs>
+              <path d="M40 100 L100 50 L160 100 L160 160 L40 160 Z"/>
+              <line x1="40" y1="100" x2="160" y2="100"/>
+              <line x1="100" y1="50" x2="100" y2="100"/>
+              <rect x="85" y="120" width="30" height="40"/>
+              <rect x="55" y="115" width="20" height="20"/>
+              <rect x="125" y="115" width="20" height="20"/>
+              <line x1="55" y1="125" x2="75" y2="125" stroke-width="0.6"/>
+              <line x1="65" y1="115" x2="65" y2="135" stroke-width="0.6"/>
+              <line x1="125" y1="125" x2="145" y2="125" stroke-width="0.6"/>
+              <line x1="135" y1="115" x2="135" y2="135" stroke-width="0.6"/>
+            </svg>
+          </div>
+          <img class="slide-photo-img"
+               src="https://images.pexels.com/photos/31737860/pexels-photo-31737860.jpeg?auto=compress&cs=tinysrgb&w=1200"
+               onload="this.classList.add('loaded')"
+               onerror="sendaImgFallback(this, 'villa-night')"
+               alt="Residencia premium" />
+          <span class="slide-tag"><span>Living Care · 01</span></span>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <span class="slide-eyebrow">Residencia Premium</span>
+            <h3 class="slide-title">El hogar que <em>cuida cada detalle.</em></h3>
+          </div>
+        </article>
+
+        <!-- ─── SLIDE 02: Technical Care ─── -->
+        <article class="slide" data-theme="technical">
+          <div class="slide-bg"></div>
+          <div class="slide-pattern">
+            <svg viewBox="0 0 100 125" preserveAspectRatio="xMidYMid slice" fill="none" stroke="rgba(255,180,90,0.10)" stroke-width="0.15">
+              <!-- Circuit pattern -->
+              <path d="M10 30 L30 30 L30 50 L50 50 L50 30 L70 30 L70 50 L90 50"/>
+              <path d="M10 70 L25 70 L25 90 L45 90 L45 70 L65 70 L65 90 L85 90"/>
+              <path d="M15 105 L40 105 L40 115 L70 115 L70 100 L90 100"/>
+              <circle cx="30" cy="30" r="1.5" fill="rgba(255,180,90,0.18)"/>
+              <circle cx="50" cy="30" r="1.5" fill="rgba(255,180,90,0.18)"/>
+              <circle cx="70" cy="30" r="1.5" fill="rgba(255,180,90,0.18)"/>
+              <circle cx="25" cy="70" r="1.5" fill="rgba(255,180,90,0.18)"/>
+              <circle cx="65" cy="70" r="1.5" fill="rgba(255,180,90,0.18)"/>
+              <circle cx="45" cy="90" r="1.5" fill="rgba(255,180,90,0.18)"/>
+              <circle cx="70" cy="115" r="1.5" fill="rgba(255,180,90,0.18)"/>
+            </svg>
+          </div>
+          <div class="slide-number">02</div>
+          <div class="slide-icon">
+            <svg viewBox="0 0 200 200" fill="none" stroke="url(#grad-copper-2)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <defs>
+                <linearGradient id="grad-copper-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#B8865A"/>
+                  <stop offset="100%" stop-color="#E8C97A"/>
+                </linearGradient>
+              </defs>
+              <!-- Lightning bolt -->
+              <path d="M110 30 L60 110 L95 110 L85 170 L140 90 L105 90 L115 30 Z" stroke-width="1.5"/>
+              <!-- Decorative rays -->
+              <line x1="30" y1="100" x2="50" y2="100" stroke-width="0.6" opacity="0.7"/>
+              <line x1="155" y1="100" x2="175" y2="100" stroke-width="0.6" opacity="0.7"/>
+              <line x1="40" y1="60" x2="55" y2="75" stroke-width="0.6" opacity="0.7"/>
+              <line x1="160" y1="125" x2="145" y2="140" stroke-width="0.6" opacity="0.7"/>
+              <line x1="40" y1="140" x2="55" y2="125" stroke-width="0.6" opacity="0.7"/>
+              <line x1="160" y1="60" x2="145" y2="75" stroke-width="0.6" opacity="0.7"/>
+            </svg>
+          </div>
+          <img class="slide-photo-img"
+               src="https://images.pexels.com/photos/257736/pexels-photo-257736.jpeg?auto=compress&cs=tinysrgb&w=1200"
+               onload="this.classList.add('loaded')"
+               onerror="sendaImgFallback(this, 'electric-work')"
+               alt="Técnico trabajando en instalación eléctrica" />
+          <span class="slide-tag"><span>Living Care · 02</span></span>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <span class="slide-eyebrow">Technical Care</span>
+            <h3 class="slide-title">Electricidad y climatización <em>de precisión.</em></h3>
+          </div>
+        </article>
+
+        <!-- ─── SLIDE 03: Green Care ─── -->
+        <article class="slide" data-theme="green">
+          <div class="slide-bg"></div>
+          <div class="slide-pattern">
+            <svg viewBox="0 0 100 125" preserveAspectRatio="xMidYMid slice" fill="none" stroke="rgba(180,160,90,0.12)" stroke-width="0.2" stroke-linecap="round">
+              <!-- Botanical pattern -->
+              <g opacity="0.8">
+                <path d="M15 110 Q20 95 30 90 Q40 85 35 75"/>
+                <path d="M22 100 Q25 95 30 96"/>
+                <path d="M28 92 Q32 88 35 88"/>
+              </g>
+              <g opacity="0.7">
+                <path d="M85 115 Q80 100 70 95 Q60 90 65 80"/>
+                <path d="M78 105 Q75 100 70 101"/>
+                <path d="M72 97 Q68 93 65 93"/>
+              </g>
+              <g opacity="0.6">
+                <path d="M50 15 Q55 30 60 35 Q65 40 60 50"/>
+                <path d="M55 25 Q58 30 60 32"/>
+                <path d="M58 35 Q62 38 65 38"/>
+              </g>
+              <!-- Decorative dots -->
+              <circle cx="30" cy="30" r="0.8" fill="rgba(180,160,90,0.18)"/>
+              <circle cx="75" cy="50" r="0.8" fill="rgba(180,160,90,0.18)"/>
+              <circle cx="40" cy="70" r="0.8" fill="rgba(180,160,90,0.18)"/>
+              <circle cx="80" cy="30" r="0.8" fill="rgba(180,160,90,0.18)"/>
+            </svg>
+          </div>
+          <div class="slide-number">03</div>
+          <div class="slide-icon">
+            <svg viewBox="0 0 200 200" fill="none" stroke="url(#grad-copper-3)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <defs>
+                <linearGradient id="grad-copper-3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#B8865A"/>
+                  <stop offset="100%" stop-color="#E8C97A"/>
+                </linearGradient>
+              </defs>
+              <!-- Stylized leaf -->
+              <path d="M100 30 Q60 50 60 105 Q60 145 100 165 Q140 145 140 105 Q140 50 100 30 Z" stroke-width="1.5"/>
+              <path d="M100 35 L100 165" stroke-width="0.8"/>
+              <path d="M100 60 Q85 60 75 75" stroke-width="0.8"/>
+              <path d="M100 85 Q115 85 125 95" stroke-width="0.8"/>
+              <path d="M100 110 Q85 110 73 122" stroke-width="0.8"/>
+              <path d="M100 130 Q115 130 124 140" stroke-width="0.8"/>
+              <!-- Stem -->
+              <path d="M100 165 Q100 175 105 185" stroke-width="0.8"/>
+            </svg>
+          </div>
+          <img class="slide-photo-img"
+               src="https://images.pexels.com/photos/24595769/pexels-photo-24595769.jpeg?auto=compress&cs=tinysrgb&w=1200"
+               onload="this.classList.add('loaded')"
+               onerror="sendaImgFallback(this, 'garden-pro')"
+               alt="Jardinero profesional trabajando" />
+          <span class="slide-tag"><span>Living Care · 03</span></span>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <span class="slide-eyebrow">Green Care</span>
+            <h3 class="slide-title">Jardinería y paisajismo <em>eco-friendly.</em></h3>
+          </div>
+        </article>
+
+        <!-- ─── SLIDE 04: Smart Care ─── -->
+        <article class="slide" data-theme="smart">
+          <div class="slide-bg"></div>
+          <div class="slide-pattern">
+            <svg viewBox="0 0 100 125" preserveAspectRatio="xMidYMid slice" fill="none" stroke="rgba(170,200,230,0.12)" stroke-width="0.15">
+              <!-- Network nodes -->
+              <g>
+                <circle cx="20" cy="30" r="1.5" fill="rgba(170,200,230,0.20)"/>
+                <circle cx="50" cy="20" r="2" fill="rgba(170,200,230,0.25)"/>
+                <circle cx="80" cy="35" r="1.5" fill="rgba(170,200,230,0.20)"/>
+                <circle cx="35" cy="60" r="1.5" fill="rgba(170,200,230,0.20)"/>
+                <circle cx="70" cy="55" r="1.5" fill="rgba(170,200,230,0.20)"/>
+                <circle cx="15" cy="85" r="1.5" fill="rgba(170,200,230,0.20)"/>
+                <circle cx="50" cy="95" r="2" fill="rgba(170,200,230,0.25)"/>
+                <circle cx="85" cy="80" r="1.5" fill="rgba(170,200,230,0.20)"/>
+                <circle cx="30" cy="110" r="1.5" fill="rgba(170,200,230,0.20)"/>
+                <circle cx="75" cy="115" r="1.5" fill="rgba(170,200,230,0.20)"/>
+              </g>
+              <!-- Connections -->
+              <line x1="20" y1="30" x2="50" y2="20"/>
+              <line x1="50" y1="20" x2="80" y2="35"/>
+              <line x1="20" y1="30" x2="35" y2="60"/>
+              <line x1="50" y1="20" x2="35" y2="60"/>
+              <line x1="80" y1="35" x2="70" y2="55"/>
+              <line x1="35" y1="60" x2="70" y2="55"/>
+              <line x1="35" y1="60" x2="15" y2="85"/>
+              <line x1="70" y1="55" x2="85" y2="80"/>
+              <line x1="35" y1="60" x2="50" y2="95"/>
+              <line x1="70" y1="55" x2="50" y2="95"/>
+              <line x1="15" y1="85" x2="30" y2="110"/>
+              <line x1="50" y1="95" x2="30" y2="110"/>
+              <line x1="50" y1="95" x2="75" y2="115"/>
+              <line x1="85" y1="80" x2="75" y2="115"/>
+            </svg>
+          </div>
+          <div class="slide-number">04</div>
+          <div class="slide-icon">
+            <svg viewBox="0 0 200 200" fill="none" stroke="url(#grad-copper-4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <defs>
+                <linearGradient id="grad-copper-4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#B8865A"/>
+                  <stop offset="100%" stop-color="#E8C97A"/>
+                </linearGradient>
+              </defs>
+              <!-- Wifi waves -->
+              <path d="M40 110 Q100 50 160 110" stroke-width="2"/>
+              <path d="M55 125 Q100 80 145 125" stroke-width="1.6"/>
+              <path d="M72 140 Q100 115 128 140" stroke-width="1.4"/>
+              <circle cx="100" cy="160" r="6" fill="url(#grad-copper-4)" stroke="none"/>
+              <!-- Decorative network dots -->
+              <circle cx="35" cy="50" r="2" fill="url(#grad-copper-4)" stroke="none"/>
+              <circle cx="165" cy="50" r="2" fill="url(#grad-copper-4)" stroke="none"/>
+              <circle cx="20" cy="170" r="2" fill="url(#grad-copper-4)" stroke="none"/>
+              <circle cx="180" cy="170" r="2" fill="url(#grad-copper-4)" stroke="none"/>
+              <line x1="35" y1="50" x2="55" y2="65" stroke-width="0.6" opacity="0.5"/>
+              <line x1="165" y1="50" x2="145" y2="65" stroke-width="0.6" opacity="0.5"/>
+              <line x1="20" y1="170" x2="45" y2="155" stroke-width="0.6" opacity="0.5"/>
+              <line x1="180" y1="170" x2="155" y2="155" stroke-width="0.6" opacity="0.5"/>
+            </svg>
+          </div>
+          <img class="slide-photo-img"
+               src="https://images.pexels.com/photos/23459391/pexels-photo-23459391.jpeg?auto=compress&cs=tinysrgb&w=1200"
+               onload="this.classList.add('loaded')"
+               onerror="sendaImgFallback(this, 'smart-home')"
+               alt="Domótica y seguridad inteligente" />
+          <span class="slide-tag"><span>Living Care · 04</span></span>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <span class="slide-eyebrow">Smart Care</span>
+            <h3 class="slide-title">Domótica y seguridad <em>inteligente.</em></h3>
+          </div>
+        </article>
+
+        <!-- ─── SLIDE 05: Pool Care ─── -->
+        <article class="slide" data-theme="pool">
+          <div class="slide-bg"></div>
+          <div class="slide-pattern">
+            <svg viewBox="0 0 100 125" preserveAspectRatio="xMidYMid slice" fill="none" stroke="rgba(150,200,220,0.12)" stroke-width="0.2" stroke-linecap="round">
+              <!-- Wave pattern -->
+              <path d="M0 25 Q12 20 25 25 T50 25 T75 25 T100 25"/>
+              <path d="M0 40 Q12 35 25 40 T50 40 T75 40 T100 40"/>
+              <path d="M0 60 Q12 55 25 60 T50 60 T75 60 T100 60"/>
+              <path d="M0 80 Q12 75 25 80 T50 80 T75 80 T100 80"/>
+              <path d="M0 100 Q12 95 25 100 T50 100 T75 100 T100 100"/>
+              <path d="M0 115 Q12 110 25 115 T50 115 T75 115 T100 115"/>
+              <!-- Light reflections -->
+              <circle cx="25" cy="32" r="0.6" fill="rgba(220,235,245,0.30)"/>
+              <circle cx="68" cy="48" r="0.5" fill="rgba(220,235,245,0.30)"/>
+              <circle cx="40" cy="70" r="0.7" fill="rgba(220,235,245,0.30)"/>
+              <circle cx="80" cy="90" r="0.5" fill="rgba(220,235,245,0.30)"/>
+              <circle cx="30" cy="105" r="0.6" fill="rgba(220,235,245,0.30)"/>
+            </svg>
+          </div>
+          <div class="slide-number">05</div>
+          <div class="slide-icon">
+            <svg viewBox="0 0 200 200" fill="none" stroke="url(#grad-copper-5)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <defs>
+                <linearGradient id="grad-copper-5" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#B8865A"/>
+                  <stop offset="100%" stop-color="#E8C97A"/>
+                </linearGradient>
+              </defs>
+              <!-- Stylized water waves -->
+              <path d="M20 75 Q50 55 80 75 T140 75 T200 75" stroke-width="2.2"/>
+              <path d="M20 105 Q50 85 80 105 T140 105 T200 105" stroke-width="2"/>
+              <path d="M20 135 Q50 115 80 135 T140 135 T200 135" stroke-width="1.8"/>
+              <!-- Drops above -->
+              <ellipse cx="60" cy="40" rx="3" ry="6" stroke-width="1"/>
+              <ellipse cx="100" cy="30" rx="4" ry="8" stroke-width="1"/>
+              <ellipse cx="140" cy="42" rx="3" ry="6" stroke-width="1"/>
+            </svg>
+          </div>
+          <img class="slide-photo-img"
+               src="https://images.pexels.com/photos/14053649/pexels-photo-14053649.jpeg?auto=compress&cs=tinysrgb&w=1200"
+               onload="this.classList.add('loaded')"
+               onerror="sendaImgFallback(this, 'pool-water')"
+               alt="Pileta limpia con agua clara" />
+          <span class="slide-tag"><span>Living Care · 05</span></span>
+          <div class="slide-overlay"></div>
+          <div class="slide-caption">
+            <span class="slide-eyebrow">Pool Care</span>
+            <h3 class="slide-title">Mantenimiento integral <em>de piletas.</em></h3>
+          </div>
+        </article>
+
+        <!-- ─── Decorative corners ─── -->
+        <span class="hero-corner tl"></span>
+        <span class="hero-corner tr"></span>
+        <span class="hero-corner bl"></span>
+        <span class="hero-corner br"></span>
+
+        <!-- ─── Progress dots (top-right) ─── -->
+        <div class="slider-dots" id="sliderDots">
+          <button class="slider-dot active" data-idx="0" aria-label="Slide 1"></button>
+          <button class="slider-dot"        data-idx="1" aria-label="Slide 2"></button>
+          <button class="slider-dot"        data-idx="2" aria-label="Slide 3"></button>
+          <button class="slider-dot"        data-idx="3" aria-label="Slide 4"></button>
+          <button class="slider-dot"        data-idx="4" aria-label="Slide 5"></button>
+        </div>
+
+        <!-- ─── Controls (bottom strip) ─── -->
+        <div class="slider-controls">
+          <div class="slider-counter">
+            <span class="current">01</span>
+            <span class="sep">/</span>
+            <span class="total">05</span>
+          </div>
+          <div class="slider-nav">
+            <button class="slider-btn" id="sliderPrev" aria-label="Anterior">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M8 2 L4 6 L8 10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="slider-btn" id="sliderNext" aria-label="Siguiente">
+              <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M4 2 L8 6 L4 10" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+      <div class="hero-meta">
+        <span><strong>Atención:</strong> Barrios cerrados AMBA</span>
+        <span><strong>Tel:</strong> +54 9 11 5101 2478</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Descubrir</span>
+  </div>
+</section>
+
+<!-- ═══════ MANIFESTO ═══════ -->
+<section class="manifesto" id="manifesto">
+  <div class="container">
+    <div class="reveal" style="text-align:center; margin-bottom:80px;">
+      <span class="eyebrow">— 01 —  Nuestra filosofía</span>
+    </div>
+
+    <p class="manifesto-quote reveal delay-1">
+      Disfrute su tiempo. <span class="key">Nosotros nos ocupamos del resto.</span>
+    </p>
+
+    <div class="manifesto-attribution reveal delay-2">
+      <span>SENDA Living Care</span>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar reveal delay-1">
+        <div class="pillar-name">Confianza</div>
+        <p class="pillar-desc">Protocolos rigurosos y documentación siempre en regla. Cada técnico, cada visita, sin excepciones.</p>
+      </div>
+      <div class="pillar reveal delay-2">
+        <div class="pillar-name">Calidad</div>
+        <p class="pillar-desc">Personal calificado y certificado, trabajando bajo estándares premium en cada intervención.</p>
+      </div>
+      <div class="pillar reveal delay-3">
+        <div class="pillar-name">Responsividad</div>
+        <p class="pillar-desc">Gestión proactiva y presencia constante. Anticipamos antes de que surja la necesidad.</p>
+      </div>
+      <div class="pillar reveal delay-4">
+        <div class="pillar-name">Sustentabilidad</div>
+        <p class="pillar-desc">Soluciones eco-friendly que cuidan su hogar, su entorno y el largo plazo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ SERVICIOS ═══════ -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head-left">
+        <span class="section-num">— 02 — Servicios</span>
+        <h2 class="display">
+          Un único proveedor.<br>
+          <em>Todas las soluciones.</em>
+        </h2>
+        <p class="body-text">
+          Seis líneas de servicio coordinadas bajo un mismo estándar de excelencia.
+          Diseñadas para cubrir cada aspecto del mantenimiento de su residencia,
+          sin que usted tenga que coordinar con múltiples proveedores.
+        </p>
+      </div>
+    </div>
+
+    <div class="services-grid">
+      <!-- 01 Technical Care -->
+      <article class="service-card reveal">
+        <span class="service-num">01</span>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M26 6 L14 26 L20 26 L18 42 L34 22 L28 22 L30 6 Z"
+                stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/>
+        </svg>
+        <div class="service-tag">Care · 01</div>
+        <h3 class="service-name">Technical <em>Care</em></h3>
+        <p class="service-desc">Electricidad, climatización y reparación de electrodomésticos. Diagnósticos preventivos y respuesta técnica especializada.</p>
+      </article>
+
+      <!-- 02 Green Care -->
+      <article class="service-card reveal delay-1">
+        <span class="service-num">02</span>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M24 8 Q14 14 14 26 Q14 36 24 40 Q34 36 34 26 Q34 14 24 8 Z"
+                stroke="currentColor" stroke-width="1.5" fill="none"/>
+          <path d="M24 12 L24 40" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+          <path d="M24 22 Q19 22 17 24" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+          <path d="M24 30 Q29 30 31 28" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+        </svg>
+        <div class="service-tag">Care · 02</div>
+        <h3 class="service-name">Green <em>Care</em></h3>
+        <p class="service-desc">Jardinería, paisajismo y control de plagas eco-friendly. Mantenemos su entorno verde con soluciones respetuosas.</p>
+      </article>
+
+      <!-- 03 Smart Care -->
+      <article class="service-card reveal delay-2">
+        <span class="service-num">03</span>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M10 24 Q24 12 38 24" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M14 28 Q24 19 34 28" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <path d="M18 32 Q24 27 30 32" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+          <circle cx="24" cy="38" r="2.2" fill="currentColor"/>
+        </svg>
+        <div class="service-tag">Care · 03</div>
+        <h3 class="service-name">Smart <em>Care</em></h3>
+        <p class="service-desc">Domótica integral, seguridad electrónica y automatización inteligente. Tecnología que trabaja en silencio para usted.</p>
+      </article>
+
+      <!-- 04 Home Care -->
+      <article class="service-card reveal delay-3">
+        <span class="service-num">04</span>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M24 8 L8 22 L8 40 L40 40 L40 22 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" fill="none"/>
+          <rect x="20" y="28" width="8" height="12" stroke="currentColor" stroke-width="1.3" fill="none"/>
+          <line x1="14" y1="26" x2="18" y2="26" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+          <line x1="30" y1="26" x2="34" y2="26" stroke="currentColor" stroke-width="1.2" opacity="0.6"/>
+        </svg>
+        <div class="service-tag">Care · 04</div>
+        <h3 class="service-name">Home <em>Care</em></h3>
+        <p class="service-desc">Albañilería, pintura, plomería y mantenimiento estructural. Cuidado preventivo y correctivo del edificio.</p>
+      </article>
+
+      <!-- 05 Clean Care -->
+      <article class="service-card reveal delay-4">
+        <span class="service-num">05</span>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M24 6 L26 18 L38 20 L26 22 L24 34 L22 22 L10 20 L22 18 Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+          <path d="M14 38 L16 42 L18 38 Z" fill="currentColor" opacity="0.7"/>
+          <path d="M34 36 L36 40 L38 36 Z" fill="currentColor" opacity="0.5"/>
+        </svg>
+        <div class="service-tag">Care · 05</div>
+        <h3 class="service-name">Clean <em>Care</em></h3>
+        <p class="service-desc">Limpieza técnica profunda y mantenimiento de espacios. Servicio especializado para superficies premium y delicadas.</p>
+      </article>
+
+      <!-- 06 Pool Care -->
+      <article class="service-card reveal delay-5">
+        <span class="service-num">06</span>
+        <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M6 20 Q12 16 18 20 Q24 24 30 20 Q36 16 42 20" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          <path d="M6 28 Q12 24 18 28 Q24 32 30 28 Q36 24 42 28" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+          <path d="M6 36 Q12 32 18 36 Q24 40 30 36 Q36 32 42 36" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="service-tag">Care · 06</div>
+        <h3 class="service-name">Pool <em>Care</em></h3>
+        <p class="service-desc">Mantenimiento integral de piletas, sistemas de filtrado y químicos. Su pileta lista para disfrutar todo el año.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DIFERENCIALES ═══════ -->
+<section class="differentiators" id="diferenciales">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head-left">
+        <span class="section-num">— 03 — Cómo trabajamos</span>
+        <h2 class="display">
+          Lo que nos hace<br>
+          <em>diferentes.</em>
+        </h2>
+        <p class="body-text">
+          Cuatro pilares operativos que definen nuestra forma de cuidar su hogar.
+          Cada uno diseñado para resolver un dolor real del propietario de residencia premium.
+        </p>
+      </div>
+    </div>
+
+    <div class="diff-list">
+      <article class="diff-item reveal">
+        <div class="diff-num">01</div>
+        <div>
+          <h3 class="diff-headline">
+            Protocolo de <em>ingreso SENDA</em>
+            <span class="tag">El diferencial clave</span>
+          </h3>
+        </div>
+        <p class="diff-detail">
+          Gestionamos proactivamente toda la documentación requerida por su barrio cerrado:
+          <strong>ART, seguros de responsabilidad civil, habilitaciones y acreditaciones</strong>
+          siempre vigentes. Nuestros técnicos ingresan sin contratiempos. Usted no se ocupa de nada.
+        </p>
+      </article>
+
+      <article class="diff-item reveal">
+        <div class="diff-num">02</div>
+        <div>
+          <h3 class="diff-headline">
+            Reporte de <em>estado mensual</em>
+            <span class="tag">Trazabilidad total</span>
+          </h3>
+        </div>
+        <p class="diff-detail">
+          Cada mes recibe un <strong>informe digital con checklist fotográfico</strong>,
+          estado actualizado de todos los sistemas de su hogar y recomendaciones preventivas.
+          La tranquilidad de saber exactamente qué se hizo y qué viene.
+        </p>
+      </article>
+
+      <article class="diff-item reveal">
+        <div class="diff-num">03</div>
+        <div>
+          <h3 class="diff-headline">
+            Presencia <em>profesional</em>
+            <span class="tag">Discreción ante todo</span>
+          </h3>
+        </div>
+        <p class="diff-detail">
+          Técnicos <strong>uniformados, capacitados y con trato discreto</strong>.
+          Personal estable, entrenado en protocolos de propiedades premium.
+          Su hogar siempre en las mismas manos confiables.
+        </p>
+      </article>
+
+      <article class="diff-item reveal">
+        <div class="diff-num">04</div>
+        <div>
+          <h3 class="diff-headline">
+            Mantenimiento <em>preventivo</em>
+            <span class="tag">Previsibilidad absoluta</span>
+          </h3>
+        </div>
+        <p class="diff-detail">
+          Planes mensuales adaptados a las necesidades específicas de su residencia.
+          <strong>Cero sorpresas, presupuesto previsible</strong> y atención anticipada
+          a cualquier necesidad antes de que sea urgente.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BARRIOS CERRADOS ═══════ -->
+<section class="barrios" id="barrios">
+  <div class="container barrios-grid">
+    <div class="barrios-left reveal">
+      <span class="section-num">— 04 — Especialización</span>
+      <h2 class="display" style="margin-top:24px;">
+        Diseñado para<br>
+        <em>barrios cerrados.</em>
+      </h2>
+      <p class="body-text">
+        Conocemos las particularidades de operar dentro de un barrio privado o country:
+        los protocolos de seguridad, la documentación requerida, los horarios permitidos,
+        las exigencias de discreción.
+      </p>
+      <p class="body-text">
+        SENDA fue pensado desde el origen para servir exclusivamente a este segmento.
+        No adaptamos un servicio masivo a su barrio: <em style="color: var(--champagne-l); font-family: 'Cormorant Garamond', serif;">construimos
+        un servicio específicamente para él</em>.
+      </p>
+
+      <ul class="barrios-list">
+        <li>Atendemos los principales barrios cerrados del AMBA</li>
+        <li>Personal preacreditado y conocido por seguridad</li>
+        <li>Coordinación directa con administración del barrio</li>
+        <li>Horarios respetuosos del reglamento interno</li>
+      </ul>
+    </div>
+
+    <div class="protocol-card reveal delay-1">
+      <span class="protocol-label">Protocolo SENDA</span>
+      <h3 class="protocol-title">
+        Acceso fluido,<br>
+        <em>documentación siempre en regla.</em>
+      </h3>
+      <p class="protocol-body">
+        Antes de cada ingreso, validamos que toda la documentación esté vigente y entregada
+        a la guardia del barrio. Si algo está por vencer, lo renovamos. Si surge un nuevo
+        requisito, lo cumplimos. <strong>Usted nunca se entera del proceso administrativo.</strong>
+      </p>
+      <p class="protocol-body">
+        Esa es la promesa central de Living Care: la documentación, los seguros, las
+        habilitaciones — todo gestionado en silencio, para que su único trabajo sea
+        disfrutar de su hogar.
+      </p>
+      <ul class="protocol-items">
+        <li>ART al día</li>
+        <li>Seguros vigentes</li>
+        <li>Habilitaciones técnicas</li>
+        <li>Acreditaciones del personal</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROCESS ═══════ -->
+<section class="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-head-left">
+        <span class="section-num">— 05 — Proceso</span>
+        <h2 class="display">
+          Cómo <em>empezamos.</em>
+        </h2>
+        <p class="body-text">
+          Un proceso simple y transparente. Desde el primer contacto hasta el plan
+          de mantenimiento personalizado, cuatro pasos para tener su hogar bajo
+          gestión integral.
+        </p>
+      </div>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="process-num">i</div>
+        <h4 class="process-step-name">Conversación inicial</h4>
+        <p class="process-step-desc">Una primera charla por WhatsApp o presencial para entender su residencia y sus prioridades.</p>
+      </div>
+      <div class="process-step reveal delay-1">
+        <div class="process-num">ii</div>
+        <h4 class="process-step-name">Diagnóstico Living Care</h4>
+        <p class="process-step-desc">Visita técnica completa y relevamiento. Identificamos estado actual y necesidades preventivas.</p>
+      </div>
+      <div class="process-step reveal delay-2">
+        <div class="process-num">iii</div>
+        <h4 class="process-step-name">Plan a medida</h4>
+        <p class="process-step-desc">Diseñamos un plan mensual ajustado a su hogar, sus tiempos y su presupuesto previsible.</p>
+      </div>
+      <div class="process-step reveal delay-3">
+        <div class="process-num">iv</div>
+        <h4 class="process-step-name">Gestión continua</h4>
+        <p class="process-step-desc">Comenzamos a ocuparnos. Usted sólo recibe el reporte mensual y disfruta de su hogar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CONTACT ═══════ -->
+<section class="contact" id="contacto">
+  <div class="container contact-grid">
+    <div class="contact-left reveal">
+      <span class="section-num">— 06 — Contacto</span>
+      <h2 class="display" style="margin-top:24px;">
+        Hablemos sobre<br>
+        <em>su hogar.</em>
+      </h2>
+      <p class="body-text">
+        La primera conversación es breve y sin compromiso. Cuéntenos brevemente
+        sobre su residencia y le respondemos en menos de 24 horas hábiles con
+        una propuesta de visita técnica.
+      </p>
+
+      <div class="contact-channels">
+        <a class="contact-channel" href="https://wa.me/5491151012478" target="_blank" rel="noopener">
+          <div class="contact-channel-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </div>
+          <div class="contact-channel-info">
+            <div class="contact-channel-label">WhatsApp directo</div>
+            <div class="contact-channel-value">+54 9 11 5101 2478</div>
+          </div>
+        </a>
+
+        <a class="contact-channel" href="mailto:info@sendasrl.com.ar">
+          <div class="contact-channel-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div class="contact-channel-info">
+            <div class="contact-channel-label">Correo electrónico</div>
+            <div class="contact-channel-value">info@sendasrl.com.ar</div>
+          </div>
+        </a>
+
+        <a class="contact-channel" href="https://www.sendasrl.com.ar" target="_blank" rel="noopener">
+          <div class="contact-channel-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+          </div>
+          <div class="contact-channel-info">
+            <div class="contact-channel-label">Sitio web</div>
+            <div class="contact-channel-value">www.sendasrl.com.ar</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form reveal delay-1" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Nombre</label>
+          <input type="text" id="name" name="name" required placeholder="Su nombre">
+        </div>
+        <div class="form-group">
+          <label for="phone">Teléfono</label>
+          <input type="tel" id="phone" name="phone" required placeholder="+54 9 11 ...">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="correo@ejemplo.com">
+      </div>
+
+      <div class="form-group">
+        <label for="barrio">Barrio</label>
+        <select id="barrio" name="barrio">
+          <option value="">Seleccione su barrio</option>
+          <option>Nordelta</option>
+          <option>Pilar (countries)</option>
+          <option>Tigre (zonas privadas)</option>
+          <option>Canning</option>
+          <option>San Isidro (zonas privadas)</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">¿En qué podemos ayudarle?</label>
+        <textarea id="message" name="message" rows="3" placeholder="Cuéntenos brevemente..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Solicitar contacto</button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-block">
+          <svg class="nav-logo" viewBox="0 0 60 64" fill="none">
+            <defs>
+              <linearGradient id="footCopper" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#B8865A"/>
+                <stop offset="100%" stop-color="#D4A574"/>
+              </linearGradient>
+            </defs>
+            <path d="M30 6 L9 22 L9 47 L51 47 L51 22 Z" stroke="url(#footCopper)" stroke-width="2.2" stroke-linejoin="round" fill="none"/>
+            <circle cx="30" cy="17" r="3.2" stroke="url(#footCopper)" stroke-width="1.6" fill="none"/>
+            <line x1="30" y1="13.5" x2="30" y2="16.2" stroke="url(#footCopper)" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M25 27 Q24 30 26 32 Q28 30 27 27 Z M30 25 Q28 28 30 30 Q32 28 30 25 Z M33 28 Q31 31 33 33 Q35 31 33 28 Z" stroke="url(#footCopper)" stroke-width="1.1" fill="none"/>
+            <path d="M22 47 Q22 53 28 60 M30 47 Q30 53 32 60 M38 47 Q38 53 36 60" stroke="url(#footCopper)" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="nav-wordmark">
+            <span class="word">SENDA</span>
+            <span class="sub">Living Care</span>
+          </div>
+        </div>
+        <p class="footer-brand-mission">
+          "Su hogar, en manos de expertos."
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Servicios</div>
+        <ul>
+          <li><a href="#servicios">Technical Care</a></li>
+          <li><a href="#servicios">Green Care</a></li>
+          <li><a href="#servicios">Smart Care</a></li>
+          <li><a href="#servicios">Home Care</a></li>
+          <li><a href="#servicios">Clean Care</a></li>
+          <li><a href="#servicios">Pool Care</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Explorar</div>
+        <ul>
+          <li><a href="#manifesto">Filosofía</a></li>
+          <li><a href="#diferenciales">Diferenciales</a></li>
+          <li><a href="#barrios">Barrios cerrados</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <div class="footer-col-title">Contacto</div>
+        <ul>
+          <li><a href="https://wa.me/5491151012478" target="_blank" rel="noopener">+54 9 11 5101 2478</a></li>
+          <li><a href="mailto:info@sendasrl.com.ar">info@sendasrl.com.ar</a></li>
+          <li><a href="https://www.sendasrl.com.ar" target="_blank" rel="noopener">sendasrl.com.ar</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bar">
+      <span>© 2026 SENDA Living Care · Buenos Aires, Argentina</span>
+      <div class="legal">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="https://wa.me/5491151012478" target="_blank" rel="noopener">Hablemos</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp floating button -->
+<a class="wa-float" href="https://wa.me/5491151012478?text=Hola%20SENDA%2C%20me%20interesa%20conocer%20sus%20servicios." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4c-4.34 0-7.87 3.53-7.88 7.87 0 1.39.36 2.74 1.05 3.94L4 20l4.32-1.13a7.87 7.87 0 0 0 3.76.96h.01c4.34 0 7.87-3.53 7.87-7.87a7.83 7.83 0 0 0-2.36-5.64M12.06 18.5h-.01a6.5 6.5 0 0 1-3.32-.91l-.24-.14-2.46.64.66-2.4-.15-.24a6.55 6.55 0 0 1-1-3.49c0-3.62 2.95-6.56 6.57-6.56 1.75 0 3.4.68 4.64 1.92a6.51 6.51 0 0 1 1.92 4.65c0 3.62-2.95 6.57-6.57 6.57m3.6-4.92c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.51.64-.62.77-.12.13-.23.15-.42.05-.2-.1-.83-.31-1.59-.98-.59-.52-.98-1.17-1.1-1.37-.12-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.06-.13.03-.25-.02-.35-.05-.1-.44-1.07-.61-1.46-.16-.39-.32-.33-.44-.34l-.37-.01c-.13 0-.34.05-.51.25-.18.2-.67.66-.67 1.6 0 .95.69 1.86.78 1.99.1.13 1.35 2.07 3.28 2.9.46.2.81.32 1.09.41.46.15.87.13 1.2.08.37-.06 1.13-.46 1.29-.91.16-.45.16-.83.11-.92-.05-.08-.18-.13-.38-.23"/>
+  </svg>
+</a>
+
+<script>
+// ─── Sticky navbar background on scroll ───
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 30) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// ─── Image fallback: Pexels → Picsum if Pexels fails ───
+// Each slide's <img> calls this onerror. We swap the src to a Picsum URL
+// (which is essentially guaranteed to load). The .loaded class triggers
+// the fade-in animation when the new image finishes loading.
+function sendaImgFallback(img, seed) {
+  if (img.dataset.fallbackTried) return; // prevent infinite loops
+  img.dataset.fallbackTried = '1';
+  img.classList.remove('loaded');
+  img.onload = function() { img.classList.add('loaded'); };
+  img.src = 'https://picsum.photos/seed/' + seed + '/1200/1500';
+}
+
+// ─── Mobile nav toggle ───
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// ─── Scroll-reveal with Intersection Observer ───
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ─── Form submission → opens WhatsApp with prefilled message ───
+function handleSubmit(event) {
+  event.preventDefault();
+  const fd = new FormData(event.target);
+  const name    = fd.get('name')    || '';
+  const phone   = fd.get('phone')   || '';
+  const email   = fd.get('email')   || '';
+  const barrio  = fd.get('barrio')  || '';
+  const message = fd.get('message') || '';
+
+  const txt = encodeURIComponent(
+    `Hola SENDA, me contacto desde su sitio web.\n\n` +
+    `Nombre: ${name}\n` +
+    `Teléfono: ${phone}\n` +
+    (email   ? `Email: ${email}\n` : '') +
+    (barrio  ? `Barrio: ${barrio}\n` : '') +
+    (message ? `\nMensaje:\n${message}` : '')
+  );
+
+  window.open(`https://wa.me/5491151012478?text=${txt}`, '_blank');
+}
+
+// ─── HERO SLIDER ───
+(function initSlider() {
+  const slider  = document.getElementById('heroSlider');
+  if (!slider) return;
+
+  const slides  = slider.querySelectorAll('.slide');
+  const dots    = slider.querySelectorAll('.slider-dot');
+  const prevBtn = document.getElementById('sliderPrev');
+  const nextBtn = document.getElementById('sliderNext');
+  const counter = slider.querySelector('.slider-counter .current');
+  const TOTAL   = slides.length;
+  const INTERVAL = 6000; // 6 seconds per slide
+  let current = 0;
+  let timer   = null;
+  let paused  = false;
+
+  function go(idx) {
+    idx = ((idx % TOTAL) + TOTAL) % TOTAL;
+    // Update slides
+    slides.forEach((s, i) => s.classList.toggle('active', i === idx));
+    // Update dots
+    dots.forEach((d, i) => {
+      d.classList.remove('active', 'done');
+      if (i < idx) d.classList.add('done');
+      if (i === idx) d.classList.add('active');
+    });
+    // Counter
+    counter.textContent = String(idx + 1).padStart(2, '0');
+    current = idx;
+  }
+
+  function startAuto() {
+    clearTimeout(timer);
+    if (paused) return;
+    timer = setTimeout(() => {
+      go(current + 1);
+      startAuto();
+    }, INTERVAL);
+  }
+  function resetAuto() {
+    clearTimeout(timer);
+    if (!paused) startAuto();
+  }
+
+  // Navigation buttons
+  prevBtn.addEventListener('click', () => { go(current - 1); resetAuto(); });
+  nextBtn.addEventListener('click', () => { go(current + 1); resetAuto(); });
+
+  // Dots
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      go(parseInt(dot.dataset.idx, 10));
+      resetAuto();
+    });
+  });
+
+  // Pause on hover, resume on leave
+  slider.addEventListener('mouseenter', () => {
+    paused = true;
+    slider.classList.add('paused');
+    clearTimeout(timer);
+  });
+  slider.addEventListener('mouseleave', () => {
+    paused = false;
+    slider.classList.remove('paused');
+    startAuto();
+  });
+
+  // Touch swipe (basic)
+  let touchStartX = 0;
+  slider.addEventListener('touchstart', e => {
+    touchStartX = e.touches[0].clientX;
+  }, { passive: true });
+  slider.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) {
+      if (dx > 0) go(current - 1);
+      else go(current + 1);
+      resetAuto();
+    }
+  });
+
+  // Start
+  startAuto();
+
+  // Listen for the dot animation end to advance (more accurate timing)
+  // The CSS animation runs 6s and the JS timer also at 6s — synced.
+})();
+</script>
+
+</body>
+</html>
