@@ -1209,7 +1209,7 @@ section { position: relative; z-index: 2; }
   background: var(--bg-3);
   border-color: var(--copper);
 }
-.contact-channel-info { flex: 1; }
+.contact-channel-info { flex: 1; min-width: 0; }
 .contact-channel-label {
   font-size: 10px;
   letter-spacing: 0.32em;
@@ -1223,6 +1223,9 @@ section { position: relative; z-index: 2; }
   color: var(--text);
   font-weight: 400;
   letter-spacing: -0.005em;
+  overflow-wrap: break-word;
+  word-break: break-all;
+  min-width: 0;
 }
 
 .contact-form {
