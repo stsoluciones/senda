@@ -1,46 +1,14 @@
-// ─── Sticky navbar background on scroll ───
-const nav = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 30) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-});
+// ─── Global functions — defined before any partial loads ───
 
-// ─── Image fallback: Pexels → Picsum if Pexels fails ───
-// Each slide's <img> calls this onerror. We swap the src to a Picsum URL
-// (which is essentially guaranteed to load). The .loaded class triggers
-// the fade-in animation when the new image finishes loading.
-function sendaImgFallback(img, seed) {
-  if (img.dataset.fallbackTried) return; // prevent infinite loops
+window.sendaImgFallback = function(img, seed) {
+  if (img.dataset.fallbackTried) return;
   img.dataset.fallbackTried = '1';
   img.classList.remove('loaded');
   img.onload = function() { img.classList.add('loaded'); };
   img.src = 'https://picsum.photos/seed/' + seed + '/1200/1500';
-}
+};
 
-// ─── Mobile nav toggle ───
-const navToggle = document.getElementById('navToggle');
-const navLinks  = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => navLinks.classList.remove('open'));
-});
-
-// ─── Scroll-reveal with Intersection Observer ───
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      io.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-// ─── Form submission → opens WhatsApp with prefilled message ───
-function handleSubmit(event) {
+window.handleSubmit = function(event) {
   event.preventDefault();
   const fd = new FormData(event.target);
   const name    = fd.get('name')    || '';
@@ -59,10 +27,52 @@ function handleSubmit(event) {
   );
 
   window.open(`https://wa.me/5491151012478?text=${txt}`, '_blank');
+};
+
+// ─── Intersection Observer — created once, shared across all partials ───
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+// ─── Partial loader ───
+async function loadPartial(mountId, path) {
+  const mount = document.getElementById(mountId);
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`${path} → HTTP ${res.status}`);
+    mount.innerHTML = await res.text();
+  } catch (err) {
+    console.error('[SENDA] Failed to load partial:', err);
+    return;
+  }
+  mount.querySelectorAll('.reveal').forEach(el => io.observe(el));
 }
 
-// ─── HERO SLIDER ───
-(function initSlider() {
+// ─── Navbar init ───
+function initNavbar() {
+  const nav       = document.getElementById('navbar');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks  = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+}
+
+// ─── Hero slider init ───
+function initSlider() {
   const slider  = document.getElementById('heroSlider');
   if (!slider) return;
 
@@ -72,22 +82,19 @@ function handleSubmit(event) {
   const nextBtn = document.getElementById('sliderNext');
   const counter = slider.querySelector('.slider-counter .current');
   const TOTAL   = slides.length;
-  const INTERVAL = 6000; // 6 seconds per slide
+  const INTERVAL = 6000;
   let current = 0;
   let timer   = null;
   let paused  = false;
 
   function go(idx) {
     idx = ((idx % TOTAL) + TOTAL) % TOTAL;
-    // Update slides
     slides.forEach((s, i) => s.classList.toggle('active', i === idx));
-    // Update dots
     dots.forEach((d, i) => {
       d.classList.remove('active', 'done');
       if (i < idx) d.classList.add('done');
       if (i === idx) d.classList.add('active');
     });
-    // Counter
     counter.textContent = String(idx + 1).padStart(2, '0');
     current = idx;
   }
@@ -95,21 +102,16 @@ function handleSubmit(event) {
   function startAuto() {
     clearTimeout(timer);
     if (paused) return;
-    timer = setTimeout(() => {
-      go(current + 1);
-      startAuto();
-    }, INTERVAL);
+    timer = setTimeout(() => { go(current + 1); startAuto(); }, INTERVAL);
   }
   function resetAuto() {
     clearTimeout(timer);
     if (!paused) startAuto();
   }
 
-  // Navigation buttons
   prevBtn.addEventListener('click', () => { go(current - 1); resetAuto(); });
   nextBtn.addEventListener('click', () => { go(current + 1); resetAuto(); });
 
-  // Dots
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
       go(parseInt(dot.dataset.idx, 10));
@@ -117,7 +119,6 @@ function handleSubmit(event) {
     });
   });
 
-  // Pause on hover, resume on leave
   slider.addEventListener('mouseenter', () => {
     paused = true;
     slider.classList.add('paused');
@@ -129,7 +130,6 @@ function handleSubmit(event) {
     startAuto();
   });
 
-  // Touch swipe (basic)
   let touchStartX = 0;
   slider.addEventListener('touchstart', e => {
     touchStartX = e.touches[0].clientX;
@@ -143,9 +143,25 @@ function handleSubmit(event) {
     }
   });
 
-  // Start
   startAuto();
+}
 
-  // Listen for the dot animation end to advance (more accurate timing)
-  // The CSS animation runs 6s and the JS timer also at 6s — synced.
-})();
+// ─── Boot ───
+async function initSite() {
+  await loadPartial('mount-navbar', 'partials/navbar.html');
+  initNavbar();
+
+  await loadPartial('mount-hero', 'partials/hero.html');
+  initSlider();
+
+  await loadPartial('mount-manifesto',     'partials/manifesto.html');
+  await loadPartial('mount-servicios',     'partials/servicios.html');
+  await loadPartial('mount-diferenciales', 'partials/diferenciales.html');
+  await loadPartial('mount-barrios',       'partials/barrios.html');
+  await loadPartial('mount-process',       'partials/process.html');
+  await loadPartial('mount-contacto',      'partials/contacto.html');
+  await loadPartial('mount-footer',        'partials/footer.html');
+  await loadPartial('mount-wa-float',      'partials/wa-float.html');
+}
+
+document.addEventListener('DOMContentLoaded', initSite);
